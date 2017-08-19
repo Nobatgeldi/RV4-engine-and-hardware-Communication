@@ -23,13 +23,13 @@ using namespace System::Threading;
 extern "C"
 {
 	//--- Engine called on extension load 
-	__declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+	__declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
 	//--- STRING callExtension STRING
 	__declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
 	//--- STRING callExtension ARRAY
 	//__declspec (dllexport) int __stdcall RVExtensionArgs(char *output, int outputSize, const char *function, const char **args, int argsCnt);
-
 }
+
 //--- Extension version information shown in .rpt file
 void __stdcall RVExtensionVersion(char *output, int outputSize)
 {
@@ -60,6 +60,7 @@ namespace Nobat_ext
 		
 		SerialPort^ mySerialPort = gcnew SerialPort("COM4");
 		mySerialPort->BaudRate = 115200;
+		mySerialPort->WriteTimeout = 500;
 		//mySerialPort->Open();
 		if (!mySerialPort->IsOpen)
 		{

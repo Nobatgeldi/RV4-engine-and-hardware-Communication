@@ -1,10 +1,10 @@
-// MathLibrary.h - Contains declaration of Function class  
+// Nobat_ext.h - Contains declaration of Function class  
 #pragma once  
 
-#ifdef MATHLIBRARY_EXPORTS  
-#define MATHLIBRARY_API __declspec(dllexport)   
+#ifdef Nobat_ext_EXPORTS  
+#define Nobat_ext_API __declspec(dllexport)   
 #else  
-#define MATHLIBRARY_API __declspec(dllimport)   
+#define Nobat_ext_API __declspec(dllimport)   
 #endif  
 
 namespace Nobat_ext
