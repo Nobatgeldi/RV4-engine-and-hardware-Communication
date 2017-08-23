@@ -19,9 +19,22 @@ namespace Serial_Port
             }
             else
             {
-                result = "version 0.1";
+                if (function.Contains("COM"))
+                {
+                    if (!(function.Contains("/")))
+                    {
+                        result = Test_Connection(function);
+                    }
+                }
+                else
+                {
+                    result = "version 0.1";
+                    //result = Send_Data(function);// data yollama  yeri
+                }  
             }
+            
             output.Append(result);
+            //Console.WriteLine(output);
         }
 
         public static string Connection(String r)
@@ -32,7 +45,28 @@ namespace Serial_Port
             {
                 output = output + port + "/";
             }
+            //Console.WriteLine(output);
             return output;
+        }
+        public static string Test_Connection(String COM)
+        {
+            string succeed = "succeed";
+            string failed = "failed";
+            SerialPort connection = new SerialPort(COM, 115200);
+            try
+            {
+                connection.Open();
+                connection.Write("L");
+                connection.Close();
+                //Console.WriteLine(succeed);
+                return succeed;
+            }
+
+            catch (Exception e)
+            {
+                //Console.WriteLine(failed);
+                return failed;
+            }
         }
 
         public static string Send_Data(String axis)
@@ -71,7 +105,7 @@ namespace Serial_Port
             {
                 connection.Open();
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("Something happened :(");
             }

@@ -14,11 +14,15 @@ namespace Serial_Port_TEST
         static void Main(string[] args)
         {
             String input = "";
+            String get = "";
             Console.WriteLine("Hi Dude");
+            StringBuilder MyStringBuilder = new StringBuilder("");
             while (true)
             {
                 input = Console.ReadLine();
-                Serial_Port_List.Send_Data(input);
+                /*get=Serial_Port_List.Test_Connection(input);
+                Console.WriteLine(get);*/
+                Serial_Port_List.RvExtension(MyStringBuilder, 8, input);
             }
             
         }
