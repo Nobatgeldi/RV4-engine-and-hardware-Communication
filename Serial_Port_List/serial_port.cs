@@ -8,36 +8,32 @@ namespace Serial_Port
 {
     public class Serial_Port_List
     {
+        static string COM_IN = "COM4";
         [DllExport("RVExtension", CallingConvention = CallingConvention.Winapi)]
         public static void RvExtension(StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function)
         {
             outputSize--;
             string result = "Free";
-            if (function == "connection")
+            if (function == "serial_ports")
             {
-                result = Connection(function);
+                result = Serial_Ports(function);
             }
             else
             {
                 if (function.Contains("COM"))
                 {
-                    if (!(function.Contains("/")))
-                    {
-                        result = Test_Connection(function);
-                    }
+                    //Console.WriteLine("burdayih");
+                    result = Test_Connection(function); 
                 }
                 else
                 {
-                    result = "version 0.1";
-                    //result = Send_Data(function);// data yollama  yeri
-                }  
+                    result = Send_Data(function);
+                }
             }
-            
             output.Append(result);
-            //Console.WriteLine(output);
         }
 
-        public static string Connection(String r)
+        public static string Serial_Ports(String r)
         {
             string[] ports = SerialPort.GetPortNames();
             string output = "";
@@ -45,7 +41,6 @@ namespace Serial_Port
             {
                 output = output + port + "/";
             }
-            //Console.WriteLine(output);
             return output;
         }
         public static string Test_Connection(String COM)
@@ -58,7 +53,7 @@ namespace Serial_Port
                 connection.Open();
                 connection.Write("L");
                 connection.Close();
-                //Console.WriteLine(succeed);
+                COM_IN = COM;
                 return succeed;
             }
 
@@ -71,7 +66,7 @@ namespace Serial_Port
 
         public static string Send_Data(String axis)
         {
-            string COM = "";
+            string COM = COM_IN;
 
             string y_axis = "";
             string x_axis = "";
@@ -81,57 +76,43 @@ namespace Serial_Port
             Char delimiter = '/';
             substrings = axis.Split(delimiter);
 
-            if (axis.Contains("COM"))
-            {
-                COM = substrings[0].ToString();
+            y_axis = substrings[0].ToString();
+            x_axis = substrings[1].ToString();
+            z_axis = substrings[2].ToString();
 
-                y_axis = substrings[1].ToString();
-                x_axis = substrings[2].ToString();
-                z_axis = substrings[3].ToString();
-            }
-            else
-            {
-                y_axis = substrings[0].ToString();
-                x_axis = substrings[1].ToString();
-                z_axis = substrings[2].ToString();
-
-            }
-            Console.WriteLine(COM);
+            /*Console.WriteLine(COM);
             Console.WriteLine(y_axis);
             Console.WriteLine(x_axis);
-            Console.WriteLine(z_axis);
+            Console.WriteLine(z_axis);*/
             SerialPort connection = new SerialPort(COM, 115200);
             try
             {
                 connection.Open();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Something happened :(");
-            }
-            if (connection.IsOpen)
-            {
+                //connection.Write("y");
                 if (y_axis.Length != 0)
                 {
-                    connection.Write("Y");
+                    connection.Write("y");
+                    Console.WriteLine("Y");
                 }
-                if (x_axis.Length != 0)
+                /*if (x_axis.Length != 0)
                 {
                     connection.Write("x");
+                    Console.WriteLine("X");
                 }
-                if (z_axis.Length != 0)
+                /*if (z_axis.Length != 0)
                 {
                     connection.Write("z");
+                    Console.WriteLine("Z");
                 }
                 else
                 {
                     connection.Write("1");
-                }
+                }*/
                 connection.Close();
             }
-            else
+            catch (Exception e)
             {
-                connection.Open();
+                Console.WriteLine("Something happened :(");
             }
             return axis;
         }

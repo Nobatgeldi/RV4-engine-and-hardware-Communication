@@ -10,19 +10,22 @@ namespace Serial_Port_TEST
 {
     class Serial_Test
     {
-        Serial_Port_List connect = new Serial_Port_List();
+        //Serial_Port_List connect = new Serial_Port_List();
         static void Main(string[] args)
         {
             String input = "";
             String get = "";
-            Console.WriteLine("Hi Dude");
-            StringBuilder MyStringBuilder = new StringBuilder("");
+            Console.WriteLine("Welcome to simulation of simulation :D");
+            StringBuilder output = new StringBuilder("");
+            StringBuilder income = new StringBuilder(" ");
             while (true)
             {
                 input = Console.ReadLine();
                 /*get=Serial_Port_List.Test_Connection(input);
                 Console.WriteLine(get);*/
-                Serial_Port_List.RvExtension(MyStringBuilder, 8, input);
+                Serial_Port_List.RvExtension(output, 8, input);
+                Console.WriteLine(output);
+                output.Clear();
             }
             
         }
