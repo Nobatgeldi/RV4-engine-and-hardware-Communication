@@ -9,6 +9,12 @@ namespace Serial_Port
     public class Serial_Port_List
     {
         static string COM_IN = "COM4";
+        [DllExport("RVExtensionVersion", CallingConvention = CallingConvention.Winapi)]
+        public static void RvExtensionVersion(StringBuilder output, int outputSize)
+        {
+            output.Append("1.0.0.0");
+        }
+
         [DllExport("RVExtension", CallingConvention = CallingConvention.Winapi)]
         public static void RvExtension(StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function)
         {
@@ -33,6 +39,14 @@ namespace Serial_Port
             output.Append(result);
         }
 
+        [DllExport("RVExtensionArgs", CallingConvention = CallingConvention.Winapi)]
+        public static int RvExtensionArgs(StringBuilder output, int outputSize,[MarshalAs(UnmanagedType.LPStr)] string function, [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr, SizeParamIndex = 4)] string[] args, int argCount)
+        {
+            outputSize--; // Ensure that we don't exceed the maximum output size - it's a bit paranoid but you should keep it there
+            output.Append("This works!");
+            return 100;
+        }
+
         public static string Serial_Ports(String r)
         {
             string[] ports = SerialPort.GetPortNames();
@@ -43,6 +57,7 @@ namespace Serial_Port
             }
             return output;
         }
+
         public static string Test_Connection(String COM)
         {
             string succeed = "succeed";
