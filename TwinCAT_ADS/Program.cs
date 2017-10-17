@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections;
 using TwinCAT.Ads;
 
 namespace TwinCAT_ADS
@@ -8,35 +9,28 @@ namespace TwinCAT_ADS
     {
         private static int varHandle;
         private TcAdsClient adsClient;
+        static string r = "";
 
         static void Main(string[] args)
         {
-            Console.Write("Start");
-            Console.Write(connect_tes());
-
+            Program test = new Program();
+            //test.Test_twin();
+            test.connect_tes();
+            test.Read();
+            Console.WriteLine("Write:(True or False)");
+            test.Write();
             Console.Read();
         }
-        public static string connect_tes()
+
+        public string connect_tes()
         {
-            string r="";
-            TcAdsClient adsClient = new TcAdsClient();
+            adsClient = new TcAdsClient();
+            Program var = new Program();
             try
             {
-
                 // PLC1 Port: TwinCAT2=801, TwinCAT3=851
-
-                adsClient.Connect("172.16.3.217.1.1", 801);
-
-                /*Parameters:
-                variableName: Name of the ADS variable
-                */
-                varHandle = adsClient.CreateVariableHandle("MAIN.neyse_ne");
-
-                if (adsClient.Disconnect())
-                {
-                    //Console.Write("Connect");
-                    r = adsClient.Disconnect().ToString();
-                }
+                adsClient.Connect("5.50.205.46.1.1", 801);
+                varHandle = adsClient.CreateVariableHandle("Axis_contrl.JogBackwardPD");
             }
             catch (Exception err)
             {
@@ -46,20 +40,15 @@ namespace TwinCAT_ADS
             return r;
         }
 
-        public void close()
-        {
-            adsClient.Dispose();
-        }
-
         private void Read()
         {
             try
             {
                 AdsStream adsStream = new AdsStream(30);
                 AdsBinaryReader reader = new AdsBinaryReader(adsStream);
-                adsClient.Read(varHandle, adsStream);
-
-                Console.Write(reader.ReadPlcString(30));
+                Console.WriteLine(varHandle);
+                //adsClient.Read(varHandle, adsStream);
+                Console.WriteLine(adsClient.ReadAny(varHandle, typeof(Boolean)).ToString());
             }
             catch (Exception err)
             {
@@ -74,16 +63,18 @@ namespace TwinCAT_ADS
             {
                 AdsStream adsStream = new AdsStream(30);
                 AdsBinaryWriter writer = new AdsBinaryWriter(adsStream);
-
                 input = Console.ReadLine();
-                writer.WritePlcString(input, 30);
-
-                adsClient.Write(varHandle, adsStream);
+                adsClient.WriteAny(varHandle, Boolean.Parse(input));
             }
             catch (Exception err)
             {
                 Console.Write(err);
             }
+        }
+
+        public void close()
+        {
+            adsClient.Dispose();
         }
     }
 }
