@@ -1,41 +1,70 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Collections;
 using TwinCAT.Ads;
+using RGiesecke.DllExport;
+using System.Runtime.InteropServices;
 
-namespace TwinCAT_ADS
+namespace TwinCAT_AXIS
 {
-    class Program
+    public class Axis_control
     {
         private static int varHandle;
         private TcAdsClient adsClient;
-        static string r = "";
+        static bool r = false;
 
-        static void Main(string[] args)
+        [DllExport("RVExtension", CallingConvention = CallingConvention.Winapi)]
+        public static void RvExtension(StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function)
         {
-            Program test = new Program();
+            outputSize--;
+            Axis_control var = new Axis_control();
+            string result = "Free";
+
+            string y_axis = ""; string x_axis = ""; string z_axis = "";
+
+            String[] substrings;
+            Char delimiter = '/';
+
+            substrings = function.Split(delimiter);
+
+            y_axis = substrings[0].ToString();
+            x_axis = substrings[1].ToString();
+            z_axis = substrings[2].ToString();
+            if (var.connect_tes())
+            {
+
+            }
+            output.Append(result);
+        }
+
+        
+
+        /*static void Main(string[] args)
+        {
+            Axis_control test = new Axis_control();
             //test.Test_twin();
             test.connect_tes();
             test.Read();
             Console.WriteLine("Write:(True or False)");
             test.Write();
             Console.Read();
-        }
+        }*/
 
-        public string connect_tes()
+        public bool connect_tes()
         {
             adsClient = new TcAdsClient();
-            Program var = new Program();
+            Axis_control var = new Axis_control();
             try
             {
                 // PLC1 Port: TwinCAT2=801, TwinCAT3=851
                 adsClient.Connect("5.50.205.46.1.1", 801);
                 varHandle = adsClient.CreateVariableHandle("Main.fUnit");
+                r = true;
             }
             catch (Exception err)
             {
-                //ssageBox.Show(err.Message);
-                Console.Write(err);
+                r = false;
             }
             return r;
         }

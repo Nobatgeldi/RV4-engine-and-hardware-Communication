@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nobat_ext", "Nobat_ext\Nobat_ext.vcxproj", "{FCC39D62-B2B1-4064-B603-1B757598A5C0}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serial_Port_TEST", "Serial_Port_TEST\Serial_Port_TEST.csproj", "{25F50D5C-33A6-4570-9AB1-D9B9EFE8A25B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwinCAT_ADS", "TwinCAT_ADS\TwinCAT_ADS.csproj", "{390543AB-F0E3-4623-8EAF-6509DB3196F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwinCAT_AXIS", "TwinCAT_AXIS\TwinCAT_AXIS.csproj", "{F50982F1-C35F-4323-A588-7EC373C602C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,8 +81,23 @@ Global
 		{390543AB-F0E3-4623-8EAF-6509DB3196F8}.Release|x64.Build.0 = Release|Any CPU
 		{390543AB-F0E3-4623-8EAF-6509DB3196F8}.Release|x86.ActiveCfg = Release|Any CPU
 		{390543AB-F0E3-4623-8EAF-6509DB3196F8}.Release|x86.Build.0 = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|x64.ActiveCfg = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|x64.Build.0 = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F50982F1-C35F-4323-A588-7EC373C602C7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A87A19A-3357-4F46-8026-934AB321C5BC}
 	EndGlobalSection
 EndGlobal
