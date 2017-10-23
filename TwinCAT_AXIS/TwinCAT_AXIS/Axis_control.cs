@@ -14,10 +14,6 @@ namespace TwinCAT_AXIS
         private static int varHandle;
         private TcAdsClient adsClient;
         static bool r = false;
-        class ObjectTest
-        {
-            public double i = 0.1;
-        }
 
         [DllExport("RVExtension", CallingConvention = CallingConvention.Winapi)]
         public static void RvExtension(StringBuilder output, int outputSize, [MarshalAs(UnmanagedType.LPStr)] string function)
@@ -42,12 +38,8 @@ namespace TwinCAT_AXIS
 
             if (var.connect())
             {
-                //var.Write(x_axis);
-
                 while (counter < 20)
                 {
-                    result=unit.ToString();
-
                     counter = counter + unit;
 
                     var.Write(counter.ToString());
@@ -56,9 +48,8 @@ namespace TwinCAT_AXIS
 
                     Console.WriteLine(result);
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(1);
                 }
-
             }
             else
             {
@@ -85,22 +76,24 @@ namespace TwinCAT_AXIS
             return r;
         }
 
-        private void Read()
+        private string Read()
         {
-            String output;
+            String output="";
             try
             {
                 AdsStream adsStream = new AdsStream(30);
                 AdsBinaryReader reader = new AdsBinaryReader(adsStream);
-                //Console.WriteLine(varHandle);
-                output = adsClient.ReadAny(varHandle, typeof(int)).ToString();
+                //output = adsClient.ReadAny(varHandle, typeof(int)).ToString();
 
-                Console.WriteLine(output);
+                adsClient.Read(varHandle, adsStream);
+                output = reader.ReadPlcString(35);
+                //Console.WriteLine(output);
             }
             catch (Exception err)
             {
-                Console.Write(err);
+                output = err.ToString();
             }
+            return output;
         }
 
         private int Write(string input)
