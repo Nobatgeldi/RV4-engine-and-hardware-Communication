@@ -21,10 +21,10 @@ namespace TwinCAT_AXIS
             outputSize--;
             Axis_control var = new Axis_control();
             string result = "Free";
-            double counter;
-            double unit = 0.2;
+            double axis_x;
+            //double unit = 0.3;
 
-            string y_axis = ""; string x_axis = ""; string z_axis = "";
+            /*string y_axis = ""; string x_axis = ""; string z_axis = "";
 
             String[] substrings;
             Char delimiter = '/';
@@ -33,14 +33,18 @@ namespace TwinCAT_AXIS
 
             y_axis = substrings[0].ToString();
             x_axis = substrings[1].ToString();
-            z_axis = substrings[2].ToString();
-            counter = int.Parse(x_axis);
+            z_axis = substrings[2].ToString();*/
+
+            //axis_x = int.Parse(function);
 
             if (var.connect())
             {
-                while (counter < 20)
+                var.Write(function);
+
+                /*
+                while (counter < 100)
                 {
-                    counter = counter + unit;
+                    //counter = counter + unit;
 
                     var.Write(counter.ToString());
 
@@ -49,7 +53,24 @@ namespace TwinCAT_AXIS
                     Console.WriteLine(result);
 
                     Thread.Sleep(1);
+
+                    if (counter>=100)
+                    {
+                        while (counter > 0)
+                        {
+                            counter = counter - unit;
+                            var.Write(counter.ToString());
+
+                            result = "Axis X is at: " + counter;
+
+                            Console.WriteLine(result);
+
+                            Thread.Sleep(1);
+                        }
+                    }
+                    
                 }
+                */
             }
             else
             {
@@ -58,7 +79,7 @@ namespace TwinCAT_AXIS
             output.Append(result);
         }
 
-        public bool connect()
+        private bool connect()
         {
             adsClient = new TcAdsClient();
             Axis_control var = new Axis_control();
