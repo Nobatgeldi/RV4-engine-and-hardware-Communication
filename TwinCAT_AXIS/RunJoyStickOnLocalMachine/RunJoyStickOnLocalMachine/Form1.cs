@@ -80,7 +80,7 @@ namespace RunJoyStickOnLocalMachine
                 {
                     x=inverse(joystick.Xaxis);
 
-                    counter -= Double.Parse(x.ToString()) / 2;
+                    counter -= Double.Parse(x.ToString()) / 10;
 
                     Axis_control.RvExtension(output_string, 8, counter.ToString());
 
@@ -95,7 +95,7 @@ namespace RunJoyStickOnLocalMachine
                     joystick.Xaxis = joystick.Xaxis - 32767;
                     x = Power(joystick.Xaxis);
 
-                    counter += Double.Parse(x.ToString()) / 2;
+                    counter += Double.Parse(x.ToString()) / 10;
 
                     Axis_control.RvExtension(output_string, 8, counter.ToString());
 
