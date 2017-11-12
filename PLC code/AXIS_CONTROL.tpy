@@ -2,9 +2,9 @@
 <!--This file is created by the TCatPlcCtrl automatically. Manually changes will be overwritten!-->
 <PlcProjectInfo xmlns:p="http://www.beckhoff.com/2002/01/TcPlcProjectDesc">
 	<ProjectInfo>
-		<Path>C:\Users\Asus\Documents\Arma Drive\Projects\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
+		<Path>C:\Users\Nobat\Documents\GitHub\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
 		<IsLibrary>false</IsLibrary>
-		<ChangeDate>2017-10-23T18:33:36</ChangeDate>
+		<ChangeDate>2017-10-28T12:19:37</ChangeDate>
 		<Library>
 			<Name>TcBase.lib</Name>
 			<Path>C:\TwinCAT\PLC\LIB\TcBase.lib</Path>
