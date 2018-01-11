@@ -14,7 +14,7 @@ _COM_LISt = ["COM1", "COM2"];
 
 createDialog "COM_LIST_HARDWARE";
 
-waitUntil {!isNull(findDisplay 9999);};
+waitUntil {!isNull(findDisplay 9998);};
 
 _ctrl = (findDisplay 9999) displayCtrl 1500;
 

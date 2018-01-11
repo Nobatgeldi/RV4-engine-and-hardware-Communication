@@ -2,9 +2,15 @@
 <!--This file is created by the TCatPlcCtrl automatically. Manually changes will be overwritten!-->
 <PlcProjectInfo xmlns:p="http://www.beckhoff.com/2002/01/TcPlcProjectDesc">
 	<ProjectInfo>
+<<<<<<< HEAD
 		<Path>C:\Users\nobat\Desktop\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
 		<IsLibrary>false</IsLibrary>
 		<ChangeDate>2017-12-10T22:38:57</ChangeDate>
+=======
+		<Path>C:\Users\Nobat\Documents\GitHub\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
+		<IsLibrary>false</IsLibrary>
+		<ChangeDate>2017-10-28T12:19:37</ChangeDate>
+>>>>>>> f5976a06bb9fff62ee7e7ba46021c34e9756d3af
 		<Library>
 			<Name>TcBase.lib</Name>
 			<Path>C:\TwinCAT\PLC\LIB\TcBase.lib</Path>

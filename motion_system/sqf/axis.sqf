@@ -14,7 +14,7 @@ private ["_plane","_com","_COM_LIST","_selected_com","_BUTTON","_button_control"
 _plane = _this;
 _control=true;
 
-_return ="Serial_Port_List" callExtension "connection";
+_return ="Serial_Port_List" callExtension "serial_ports";
 
 _COM_LIST = [];
 _COM_LIST = _return splitString "/";
@@ -22,31 +22,25 @@ _COM_LIST = _return splitString "/";
 _BUTTON = ["FREE","CONNECT","START"];
 
 createDialog "COM_LIST_HARDWARE";
-
 waitUntil {!isNull(findDisplay 9999);};
 
 //list box configuration
 _ctrl = (findDisplay 9999) displayCtrl 1500;
-
 {
-
  _ctrl lbAdd _x;
-
 }forEach _COM_LIST;
 
 //button configuration
 _button_control = (findDisplay 9999) displayCtrl 1501;
-
 {
-
  _button_control lbAdd _x;
-
 }forEach _BUTTON;
+
 while{_control} do
 {
-    _selected = lbCurSel _button_control;//Returns the index of the selected item of
-                                         //the listbox or combobox with id idc of the topmost user dialog.
-                                         //For listbox LB_MULTI (multi-selection) use lbSelection.
+    _selected = lbCurSel _button_control;/*Returns the index of the selected item of
+                                           the listbox or combobox with id idc of the topmost user dialog.
+                                           For listbox LB_MULTI (multi-selection) use lbSelection.*/
     if(_selected==1) then
     {
         //get selected adress from list box
@@ -57,7 +51,6 @@ while{_control} do
         sleep 2;*/
         hintSilent "Testing Connection";
         _return ="Serial_Port_List" callExtension _com;// add com adress
-        sleep 1;
         if(_return == "succeed")then
         {
             hintSilent "Succeed";// show that it is correct device
@@ -96,7 +89,7 @@ while{_control} do
                _old_y_axis = _y_axis;
                _old_z_axis = _z_axis;
 
-               sleep 0.1;
+               sleep 0.05;
 
                _x_axis = _plane animationPhase  "horizonDive";
                _z_axis = _plane animationPhase  "horizonBank";
@@ -141,3 +134,4 @@ while{_control} do
         hintSilent "FREE";
     };
 };
+//_handle = execVM "\motion_system\sqf\gui_su_33_load.sqf";
