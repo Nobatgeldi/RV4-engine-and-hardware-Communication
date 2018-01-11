@@ -12,7 +12,6 @@ namespace Axis_TEST
         static void Main(string[] args)
         {
             String input = "";
-            String get = "";
             Console.WriteLine("Welcome to simulation of simulation :D");
             StringBuilder output = new StringBuilder("");
             StringBuilder income = new StringBuilder(" ");

@@ -2,9 +2,9 @@
 <!--This file is created by the TCatPlcCtrl automatically. Manually changes will be overwritten!-->
 <PlcProjectInfo xmlns:p="http://www.beckhoff.com/2002/01/TcPlcProjectDesc">
 	<ProjectInfo>
-		<Path>C:\Users\Asus\Documents\Arma Drive\Projects\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
+		<Path>C:\Users\nobat\Desktop\RV4-engine-and-hardware-Communication\PLC code\AXIS_CONTROL.pro</Path>
 		<IsLibrary>false</IsLibrary>
-		<ChangeDate>2017-10-23T18:33:36</ChangeDate>
+		<ChangeDate>2017-12-10T22:38:57</ChangeDate>
 		<Library>
 			<Name>TcBase.lib</Name>
 			<Path>C:\TwinCAT\PLC\LIB\TcBase.lib</Path>
@@ -28558,7 +28558,7 @@
 	</Functions>
 	<Programs>
 		<Program>
-			<Name Decoration="10030D3D" Crc32="0589336028" LastChange="2017-10-23T13:53:28">MAIN</Name>
+			<Name Decoration="10030D3D" Crc32="0021847192" LastChange="2017-12-10T22:35:10">MAIN</Name>
 			<PrgInfo>
 				<CodeIndex>1300</CodeIndex>
 				<ActionInfo>
@@ -31226,6 +31226,20 @@
 			<Type Decoration="40000024">STRING(35)</Type>
 			<IGroup>16448</IGroup>
 			<IOffset>77736</IOffset>
+			<BitSize>288</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.x_axis</Name>
+			<Type Decoration="40000024">STRING(35)</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>77772</IOffset>
+			<BitSize>288</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">.z_axis</Name>
+			<Type Decoration="40000024">STRING(35)</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>77808</IOffset>
 			<BitSize>288</BitSize>
 		</Symbol>
 		<Symbol>

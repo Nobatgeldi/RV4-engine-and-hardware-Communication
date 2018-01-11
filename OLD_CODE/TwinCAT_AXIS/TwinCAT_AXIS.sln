@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwinCAT_AXIS", "TwinCAT_AXIS\TwinCAT_AXIS.csproj", "{6A77463A-5058-48B1-9BCB-30B5491DBFFC}"
 EndProject
@@ -43,7 +43,8 @@ Global
 		{6154654B-FA1F-4678-A297-0AEEB4DE5404}.Release|x64.Build.0 = Release|Any CPU
 		{6154654B-FA1F-4678-A297-0AEEB4DE5404}.Release|x86.ActiveCfg = Release|Any CPU
 		{6154654B-FA1F-4678-A297-0AEEB4DE5404}.Release|x86.Build.0 = Release|Any CPU
-		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|Any CPU.ActiveCfg = Release|x86
+		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|Any CPU.Build.0 = Release|x86
 		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|x64.ActiveCfg = Debug|x86
 		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|x86.ActiveCfg = Debug|x86
 		{13D37251-309B-499B-9F71-A85F51B7B133}.Debug|x86.Build.0 = Debug|x86

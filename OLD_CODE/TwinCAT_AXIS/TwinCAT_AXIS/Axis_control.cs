@@ -1,11 +1,8 @@
 ﻿using System;
-using System.IO;
 using System.Text;
-using System.Collections;
 using TwinCAT.Ads;
 using System.Runtime.InteropServices;
 using RGiesecke.DllExport;
-using System.Threading;
 
 namespace TwinCAT_AXIS
 {
@@ -21,56 +18,25 @@ namespace TwinCAT_AXIS
             outputSize--;
             Axis_control var = new Axis_control();
             string result = "Free";
-            double axis_x;
-            //double unit = 0.3;
 
-            /*string y_axis = ""; string x_axis = ""; string z_axis = "";
+            #region String
+                string y_axis = ""; string x_axis = ""; string z_axis = "";
 
-            String[] substrings;
-            Char delimiter = '/';
+                String[] substrings;
+                Char delimiter = '/';
 
-            substrings = function.Split(delimiter);
+                substrings = function.Split(delimiter);
 
-            y_axis = substrings[0].ToString();
-            x_axis = substrings[1].ToString();
-            z_axis = substrings[2].ToString();*/
+                y_axis = substrings[0].ToString();
+                x_axis = substrings[1].ToString();
+                z_axis = substrings[2].ToString();
+                //Console.WriteLine(x_axis);
+            #endregion
 
-            //axis_x = int.Parse(function);
-
-            if (var.connect())
+            if (var.Connect())
             {
-                var.Write(function);
-
-                /*
-                while (counter < 100)
-                {
-                    //counter = counter + unit;
-
-                    var.Write(counter.ToString());
-
-                    result = "Axis X is at: " + counter;
-
-                    Console.WriteLine(result);
-
-                    Thread.Sleep(1);
-
-                    if (counter>=100)
-                    {
-                        while (counter > 0)
-                        {
-                            counter = counter - unit;
-                            var.Write(counter.ToString());
-
-                            result = "Axis X is at: " + counter;
-
-                            Console.WriteLine(result);
-
-                            Thread.Sleep(1);
-                        }
-                    }
-                    
-                }
-                */
+                var.Write(x_axis);
+                //var.Close();
             }
             else
             {
@@ -79,7 +45,7 @@ namespace TwinCAT_AXIS
             output.Append(result);
         }
 
-        private bool connect()
+        private bool Connect()
         {
             adsClient = new TcAdsClient();
             Axis_control var = new Axis_control();
@@ -90,7 +56,7 @@ namespace TwinCAT_AXIS
                 varHandle = adsClient.CreateVariableHandle(".input");
                 r = true;
             }
-            catch (Exception err)
+            catch 
             {
                 r = false;
             }
@@ -107,7 +73,7 @@ namespace TwinCAT_AXIS
                 //output = adsClient.ReadAny(varHandle, typeof(int)).ToString();
 
                 adsClient.Read(varHandle, adsStream);
-                output = reader.ReadPlcString(35);
+                output = reader.ReadPlcAnsiString(35);
                 //Console.WriteLine(output);
             }
             catch (Exception err)
@@ -135,7 +101,7 @@ namespace TwinCAT_AXIS
             return 0;
         }
 
-        public void close()
+        public void Close()
         {
             adsClient.Dispose();
         }

@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
-using System.IO;
-using System.Management;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Collections;
 using TwinCAT_AXIS;
 
 namespace RunJoyStickOnLocalMachine
@@ -80,12 +71,11 @@ namespace RunJoyStickOnLocalMachine
                 {
                     x=inverse(joystick.Xaxis);
 
-                    counter -= Double.Parse(x.ToString()) / 2;
+                    counter -= Double.Parse(x.ToString()) / 10;
 
                     Axis_control.RvExtension(output_string, 8, counter.ToString());
 
-                    //output.Text = "\nX:" + x.ToString() + output.Text;
-                    output.Text = "Position: "+counter.ToString() +" Speed:" + x.ToString() + "\n" + output.Text;
+                    output.Text = "Direction: Left Position: "+counter.ToString() +" Speed:" + x.ToString() + "\n" + output.Text;
 
                     Thread.Sleep(100);
                 }
@@ -95,12 +85,11 @@ namespace RunJoyStickOnLocalMachine
                     joystick.Xaxis = joystick.Xaxis - 32767;
                     x = Power(joystick.Xaxis);
 
-                    counter += Double.Parse(x.ToString()) / 2;
+                    counter += Double.Parse(x.ToString()) / 10;
 
                     Axis_control.RvExtension(output_string, 8, counter.ToString());
 
-                    //output.Text = "\nX: " + x.ToString() + output.Text;
-                    output.Text = "Position: " + counter.ToString() + " Speed:" + x.ToString() + "\n" + output.Text;
+                    output.Text = "Direction: Right Position: " + counter.ToString() + " Speed:" + x.ToString() + "\n" + output.Text;
 
                     Thread.Sleep(1);
                 }

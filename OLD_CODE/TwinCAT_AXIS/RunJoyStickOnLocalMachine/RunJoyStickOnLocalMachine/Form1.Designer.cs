@@ -38,7 +38,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(496, 25);
+            this.button1.Location = new System.Drawing.Point(1058, 34);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 54);
             this.button1.TabIndex = 0;
@@ -57,7 +57,7 @@
             this.output.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.output.Location = new System.Drawing.Point(13, 34);
             this.output.Name = "output";
-            this.output.Size = new System.Drawing.Size(477, 685);
+            this.output.Size = new System.Drawing.Size(1014, 685);
             this.output.TabIndex = 1;
             this.output.TabStop = false;
             this.output.Text = "";
@@ -65,10 +65,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Baskerville Old Face", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 22);
+            this.label1.Size = new System.Drawing.Size(153, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Output Window";
             // 
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 731);
+            this.ClientSize = new System.Drawing.Size(1214, 731);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.output);
             this.Controls.Add(this.button1);
